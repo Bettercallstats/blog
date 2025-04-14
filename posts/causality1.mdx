@@ -1,0 +1,54 @@
+---
+title: "Alphabets of Causality"
+date: "2025-04-02"
+excerpt: "Introduction to the causal framework."
+---
+
+# Causal Inference
+
+In this post, we'll talk about the prerequistes and the vocabulary we need before diving into the causal way of the world.
+
+## Statistical Foundations
+
+The arithmetic mean is defined as:
+
+$$
+\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i
+$$
+
+Where:
+
+- $n$ is the number of observations
+- $x_i$ is the $i$th observation
+
+## Code Implementation
+
+Here's how we can implement this in Python:
+
+```python
+import numpy as np
+
+def calculate_mean(data):
+    return np.mean(data)
+
+# Example usage
+data = [1, 2, 3, 4, 5]
+mean = calculate_mean(data)
+print(f"Mean: {mean}")  # Output: Mean: 3.0
+```
+
+## Jupyter Notebook Integration
+
+You can also run this in a Jupyter notebook:
+
+```python
+import matplotlib.pyplot as plt
+
+# Generate random data
+data = np.random.normal(0, 1, 1000)
+
+# Create histogram
+plt.hist(data, bins=30)
+plt.title("Normal Distribution")
+plt.show()
+```
