@@ -1,0 +1,112 @@
+---
+title: "Alphabets of Causality"
+date: "2025-04-02"
+excerpt: "Introduction to the causal thinking."
+---
+
+
+My introduction to causal inference began with a research paper titled  
+[**Evaluating Digital Tools for Sustainable Agriculture using Causal Inference**](https://arxiv.org/abs/2211.03195v1).
+
+While reading, I came across a statistical expression that immediately caught my attention:
+
+$P(Y = y \mid do(T = t))$
+
+I was familiar with the notation, but the *do* operator was entirely new to me. Curious, I looked it up, and it felt like I had opened Pandora's box.
+
+A quick YouTube search led me to a PyCon keynote:  
+[**Judea Pearl - The New Science of Cause and Effect**](https://www.youtube.com/watch?v=ZaPV1OSEpHw&t=3038s).
+
+Until then, I hadn't even heard of Judea Pearl — my bad, I know. Despite the thought-provoking talk, I still didn't fully grasp what the *do* operator actually meant. That itch stayed with me, and I started digging deeper into resources to learn causal inference.
+
+There were blog posts, YouTube videos, and scattered explanations — but nothing really clicked.
+
+Then I found [**Causal Inference: The Mixtape**](https://www.amazon.com/Causal-Inference-Mixtape-Scott-Landry/dp/1735467201) by [**Scott Cunningham**](https://www.scottcunningham.org/).  
+**Boy, oh boy!** What a comprehensive and engaging book. Best of all, it includes hands-on labs in Stata and R, with Python solutions available on the author's GitHub.
+
+Early in the book, I also encountered another legendary figure in the causal inference world:  
+[**Donald Rubin**](https://en.wikipedia.org/wiki/Donald_Rubin).
+The Causal Mixtape was my in depth introduction to causal inference my little understaing of econometrics helped a lot as well.
+Even though mixtape is enough to get you going, I reffered to a few other books to because I loved the causal way of thinking.\
+Along the way we will talk about them too.
+<div className="text-4xl text-gray-500 font-semibold font-mono">What is Causal Inference, and How Do We Actually Do It?</div>
+
+<div className="bg-slate-400 border border-slate-400 px-4 py-2 rounded-md">
+
+The Technical Defination of **Causal Inference** is :
+***Causal Inference is the process of determining the effects of an intervention on a system.***\
+Cause and effect questions are ubiquitous in our daily lives. Knowingly or unknowingly we are always trying to establish cause and effect.\
+For example, we might ask:
+- Had I not watched that movie yesterday, would I have woken up early today?
+- Will giving up pizza help me lose weight?
+- Switching from morning coffee to green tea, improve my productivity?
+
+Remember the format of these questions, it will show up again with a different name, these types of questions are the bases of 
+causal inference.\
+Causal inference is a powerful tool for understanding the world around us.It can also be said to be a subsequent step in a data-centric experimental design.  
+Let's revisit the basic structure of an experiment:
+
+1. We start with a hypothesis.  
+2. We design an experiment to test the hypothesis.  
+3. We collect data.  
+4. We analyze the data.  
+5. We draw conclusions.
+
+<div className="font-bold">Boom — we're done! Right?</div>
+
+### Not Quite: The Gold Standard and Its Limits
+
+Traditionally, we rely on **Randomized Controlled Trials (RCTs)** — the *gold standard* for causal inference.  
+RCTs minimize bias by randomly assigning subjects to treatment and control groups, ensuring that any observed effect is likely due to the treatment itself.  
+But there's a catch:  
+**RCTs are expensive, time-consuming, and not always feasible or ethical.**  
+Even when possible, they often suffer from logistical challenges and resource constraints.
+
+So what do we do in a world where data is abundant, but RCTs are impractical?
+
+### A Data-Rich Alternative: Quasi-Experiments
+
+We now generate over **280 petabytes of data per minute**. That's a staggering amount of observational data, much of it untapped for causal insights.  
+Instead of always designing new RCTs, we can often **leverage the data we already have** to make informed inferences.  
+This is where **quasi-experiments** come in.  
+**_Quasi-experiments use observational data to mimic the structure of randomized experiments, without requiring random assignment._**  
+They rely on design strategies and statistical techniques for estimating treatment effects.  
+
+To formalize reasoning in both experimental and observational settings, two major frameworks have shaped the field of causal inference:
+
+- **_Potential Outcomes (PO)_** by <strong>Donald Rubin</strong>
+- **_Structural Causal Models (SCM)_** by <strong>Judea Pearl</strong>
+Both frameworks have their own strengths and weaknesses, and they often complement each other.
+
+I will be discussing about both of them in the subsequent posts.
+</div>
+
+
+I'm going to toss around few technical jargons. It's better to refresh them before we get going!
+
+### Causal Vocabulary
+
+<div className="bg-blue-50 border border-blue-200 px-4 py-2 rounded-md">
+
+- **Covariate**: A variable that can possibly predict some aspect of the variable under study. It is also often referred to as a feature. These next two terms are the most confusing ones, so pay attention!
+
+- **Mediator**: A variable that is the reason for the effect on the dependent variable. It mostly acts as a *middle man*. If the link of the mediator is removed, so are the effects.
+
+- **Moderator**: A variable that contextualizes the effects on the dependent variable. It can change the strength or direction of the effect.
+
+- **Collider**: Collider bias — get used to hearing this term. Whether it's controlling for a collider or unintentionally introducing bias, it's going to show up everywhere in causal analysis.  
+A collider is a variable that is influenced by two or more other variables. When we condition on it (by controlling, adjusting, or selecting based on it), we can introduce spurious associations between those variables, even if no such relationship existed before.
+
+- **Confounder**: Again, something that you will hear a lot. A confounder is a variable that relays effects onto the dependent variable.  
+A confounder makes it very hard to analyze true effects. There are statistical techniques to overcome this:  
+  **Randomization**, **Restriction**, **Matching**, **Stratification** — we will discuss them in detail later.
+
+- **Correlation**: A linear relationship between two variables.
+
+- **Association**: Two variables move together, but one doesn't necessarily cause the other.  
+  _Example_: I always wake up with a headache when I sleep with my shoes on. There's a pattern, but sleeping with shoes isn't causing the headache.
+
+- **Causation**: One variable directly influences or brings about change in the other.  
+  _Example_: I wake up with a headache and my shoes still on — both are caused by drinking the night before. It's not the shoes causing the headache; it's the hangover causing both.
+
+</div>
