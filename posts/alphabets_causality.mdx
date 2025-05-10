@@ -29,12 +29,14 @@ Early in the book, I also encountered another legendary figure in the causal inf
 The Causal Mixtape was my in depth introduction to causal inference my little understaing of econometrics helped a lot as well.
 Even though mixtape is enough to get you going, I reffered to a few other books to because I loved the causal way of thinking.\
 Along the way we will talk about them too.
-<div className="text-4xl text-gray-500 font-semibold font-mono">What is Causal Inference, and How Do We Actually Do It?</div>
+
+
+<div className="text-2xl text-gray-500 font-semibold font-mono">What is Causal Inference, and How Do We Actually Do It?</div>
 
 <div className="bg-slate-400 border border-slate-400 px-4 py-2 rounded-md">
 
 The Technical Defination of **Causal Inference** is :
-***Causal Inference is the process of determining the effects of an intervention on a system.***\
+***Causal Inference is the process of determining and quantifying the effects of an intervention on a system.***\
 Cause and effect questions are ubiquitous in our daily lives. Knowingly or unknowingly we are always trying to establish cause and effect.\
 For example, we might ask:
 - Had I not watched that movie yesterday, would I have woken up early today?
@@ -96,6 +98,9 @@ I'm going to toss around few technical jargons. It's better to refresh them befo
 
 - **Moderator**: A variable that contextualizes the effects on the dependent variable. It can change the strength or direction of the effect.
 
+- **Treatment**: A representation of the manipulation of the indeepndent variable with an intervention. Generally,
+ treatment is a binary variable, but it also can be acotegorical or continous.  
+  _Example_: In a study on the effects of a new drug, the treatment group receives the drug, while the control group receives a placebo.
 - **Collider**: Collider bias — get used to hearing this term. Whether it's controlling for a collider or unintentionally introducing bias, it's going to show up everywhere in causal analysis.  
 A collider is a variable that is influenced by two or more other variables. When we condition on it (by controlling, adjusting, or selecting based on it), we can introduce spurious associations between those variables, even if no such relationship existed before.
 

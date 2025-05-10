@@ -31,7 +31,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
   const { content, data } = matter(fileContents)
 
   return (
-    <article className="max-w-3xl mx-auto prose lg:prose-lg">
+    <article className= "max-w-xl mx-auto prose prose-sm leading-relaxed text-left">
       <h1>{data.title}</h1>
       <div className="text-gray-500 mb-8">
         {new Date(data.date).toLocaleDateString()}

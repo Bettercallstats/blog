@@ -32,10 +32,9 @@ export default function About() {
             alt="Profile Picture"
             layout="fill"
             className="object-cover"
-            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+            sizes="100vw"
             priority
             quality={100}
-            objectFit="cover"
           />
         </div>
         <div className="text-gray-700 text-lg">
