@@ -54,7 +54,7 @@ export default function PerfectEmbed({
   return (
     <iframe
       ref={iframeRef}
-      src={`/${htmlPath}`}
+      src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/${htmlPath}`}
       className={`w-full overflow-hidden border border-gray-300 p-4 rounded-lg bg-white shadow-sm m-3" ${className}`}
       loading="lazy"
       onLoad={resizeIframe}
