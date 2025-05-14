@@ -3,14 +3,21 @@ import path from 'path'
 import matter from 'gray-matter'
 import Link from 'next/link'
 
+type PostMeta = {
+  slug: string
+  title: string
+  excerpt: string
+  date: string
+}
+
 export default function Home() {
-  // This is where we'll list all blog posts
-  const posts = getPosts()
+  const posts: PostMeta[] = getPosts()
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto p-6">
       <h1 className="text-4xl font-bold mb-8">Latest Posts</h1>
       <div className="space-y-6">
+        {posts.length === 0 && <p className="text-gray-600">No posts found.</p>}
         {posts.map((post) => (
           <article key={post.slug} className="border-b pb-6">
             <Link href={`/posts/${post.slug}`}>
@@ -29,29 +36,25 @@ export default function Home() {
   )
 }
 
-function getPosts() {
+function getPosts(): PostMeta[] {
   const postsDirectory = path.join(process.cwd(), 'posts')
-  
   if (!fs.existsSync(postsDirectory)) {
     return []
   }
-
   const fileNames = fs.readdirSync(postsDirectory)
   const posts = fileNames
-    .filter(fileName => fileName.endsWith('.mdx'))
-    .map(fileName => {
+    .filter((fileName) => fileName.endsWith('.mdx'))
+    .map (fileName =>{
       const fullPath = path.join(postsDirectory, fileName)
-      const fileContents = fs.readFileSync(fullPath, 'utf8')
-      const { data } = matter(fileContents)
+      const fileContents = fs.readFileSync(fullPath,'utf8')
+      const {data} = matter(fileContents)
       
       return {
         slug: fileName.replace(/\.mdx$/, ''),
         title: data.title,
-        date: data.date,
-        excerpt: data.excerpt
-      };
-    })
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-
-  return posts
+        date: data.date || new Date().toISOString(),
+        excerpt: data.excerpt,
+      }
+    }).filter(Boolean) as PostMeta[]
+  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }

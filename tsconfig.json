@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["./*"]
+    },
     "lib": [
       "dom",
       "dom.iterable",
@@ -32,4 +36,5 @@
   "exclude": [
     "node_modules"
   ]
+
 }
