@@ -1,4 +1,6 @@
 import './globals.css'
+import 'katex/dist/katex.min.css';
+import 'prism-themes/themes/prism-vsc-dark-plus.css';
 import type { Metadata } from 'next'
 import Link from 'next/link'
 

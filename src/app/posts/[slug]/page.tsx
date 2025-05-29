@@ -7,7 +7,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import rehypePrism from 'rehype-prism-plus';
 
-import 'katex/dist/katex.min.css';
+
 import PythonRunner from '@/components/PythonRunner';
 import AutoHeightEmbed from '@/components/AutoHeightEmbed';
 
@@ -37,17 +37,17 @@ const { slug } = params;
 const fullPath = path.join(process.cwd(), 'posts', `${slug}.mdx`);
 
 if (!fs.existsSync(fullPath)) {
-  return <div className="max-w-3xl mx-auto prose prose-neutral dark:prose-invert prose-sm sm:prose-base leading-relaxed">Post not found</div>;
+  return <div className="mx-auto prose prose-sm text-gray-500 text-sm mb-8">Post not found</div>;
 }
 
 const fileContents = fs.readFileSync(fullPath, 'utf8');
 const { content, data } = matter(fileContents);
 
   return (
-    <article className="max-w-3xl mx-auto prose prose-neutral dark:prose-invert prose-sm sm:prose-base leading-relaxed">
+    <article className="max-w-3xl mx-auto prose ">
       <h1>{data.title}</h1>
       {data.date && (
-        <div className="text-gray-500 text-sm mb-8">
+        <div className="mx-auto prose prose-sm sm:prose-base md:prose-lg max-w-3xl text-gray-600 dark:text-gray-300 text-sm sm:text-base mb-8 leading-relaxed prose-headings:font-semibold prose-a:text-blue-600 hover:prose-a:text-blue-800 prose-img:rounded-lg first:mt-0">
           {new Date(data.date).toLocaleDateString()}
         </div>
       )}
