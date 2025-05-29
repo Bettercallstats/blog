@@ -27,14 +27,12 @@ export default function About() {
       {/* About Me Section */}
       <div className="mb-12 flex flex-col lg:flex-row items-center gap-6">
         <div className="relative w-40 h-56 shrink-0 rounded-xl overflow-hidden border border-gray-300 shadow-md">
-          <Image
-            src="/dp.png"
+          <img
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH}/dp.png`}
             alt="Profile Picture"
-            layout="fill"
-            className="object-cover"
-            sizes="100vw"
-            priority
-            quality={100}
+            className="object-cover w-full h-full"
+            loading="eager"
+            decoding="async"
           />
         </div>
         <div className="text-gray-700 text-lg">
