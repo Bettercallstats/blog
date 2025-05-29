@@ -1,0 +1,246 @@
+---
+title: "Potential Outcomes"
+date:
+excerpt: "The Counterfactual school of thought."
+---
+
+## Potential Outcomes
+
+In the previous post, we introduced the term counterfactual.
+It makes more sense once we also understand how counterfactuals and potential outcomes fit together.
+
+The phrase potential outcomes is quite intuitive: imagine standing at a crossroads, considering each possible path.
+Each route represents a different outcome you could experience, depending on the choice you make.
+
+Let's make the idea concrete with a simple example.
+Suppose you have a splitting headache that's becoming unbearable. 
+You're considering two kinds of actions, and each action can be taken or not taken:\
+**Choices**
+
+1. Take a pain-relief pill.
+2. Skip the pill.
+3. Lie down for a nap.
+4. Stay awake.
+
+**Possible outcomes**
+
+* Headache goes away.
+* Headache persists.
+
+
+Because every choice can, in principle, be tried and its result observed, we can study these actions causally.\
+We could run an experiment, collect data, and estimate how each option affects your pain.
+Causal analysis falls apart when an outcome can never be observed.\
+For instance, the counterfactual *"What if Hitler had died fighting on the Western Front?"* 
+is impossible to test as we have no way to observe that alternate history.
+When designing an experiment or framing a causal question, we must therefore spell out choices and outcomes that are both **logically possible** and **empirically observable**. 
+Only then can we hope to answer the question with data.
+
+***Every action or lack thereof has a chance of success and failure***.
+
+![Headache Treatment](Headache_Treatment.png)
+
+
+### Formalizing Potential Outcomes
+
+Define a binary intervention variable  $Z$ such that:
+
+
+$$
+Z =
+\begin{cases}
+1, & \text{if the unit receives treatment} \\
+0, & \text{if the unit is in control}
+\end{cases}
+$$
+
+That is, $ Z \in \{0, 1\} $.
+
+$$
+Y^Z_i = 
+\begin{cases}
+Y^1_i, & \text{if unit } i \text{ receives treatment} \\
+Y^0_i, & \text{if unit } i \text{ does not receive treatment}
+\end{cases}
+$$
+observable outcomes of a unit can be represented as a function of its potential outcomes:
+$$
+Y_i = Z_i Y_i^1 + (1 - Z_i) Y_i^0 \\
+\text{Unit Treatment Effect} =  Y_i^1 - Y_i^0
+$$
+
+*Simple, right?* What we've identified above is the difference between the outcome of the treatment unit and control unit.
+But how are we supposed to obtain both outcomes for the same entity? If an entity receives the treatment, we can't go back in time and see what would have happened if they hadn't.
+We're stuck, we have encountered the, ***fundamental problem of causal inference***.\
+Which is we can only observe atmost one outcome per unit.
+Since we can't observe both outcomes for the same individual, we rely on estimation.
+
+$$
+\begin{gather*}
+\text{ATE} = \mathbb{E}[Y_i^1 - Y_i^0] = \mathbb{E}[Y_i^1] - \mathbb{E}[Y_i^0] \\
+\tiny{\text{(*Average Treatment Effect)}}
+\end{gather*}
+$$
+
+**ATE** provides an estimate of the average effect of the intervention on the entire population.It is the most common estmand,
+there are other estimands too, Like ATT, ATU.
+
+$$
+\begin{gather*}
+\text{ATT} = \mathbb{E}[Y_i^1 - Y_i^0 \mid Z_i = 1] = \mathbb{E}[Y_i^1 \mid Z_i = 1] - \mathbb{E}[Y_i^0 \mid Z_i = 1] \\
+\tiny{\text{(*Average Treatment Effect of Treated)}}
+\end{gather*}
+$$
+
+$$
+\begin{gather*}
+\text{ATU} = \mathbb{E}[Y_i^1 - Y_i^0 \mid Z_i = 0] = \mathbb{E}[Y_i^1 \mid Z_i = 0] - \mathbb{E}[Y_i^0 \mid Z_i = 0] \\
+\tiny{\text{(*Average Treatment Effect of Untreated)}}
+\end{gather*}
+$$
+
+**ATT** estimates how the treatment group would've fared had they not been treated,quite the what-if, isn't it?
+same goes for,\
+**ATU** estimates how the control group would've fared had they had been treated.
+
+## Assumptions
+
+To make the above work, we need to keep a few things in check, because if we're not careful, bias has a way of sneaking in.
+Being diligent here means being able to fend off:
+- Selection bias
+- Heterogeneity bias
+
+
+**Treatment** should be independent of the outcome, that is the value of $Z$ hould not provide any additional information about the potential outcomes
+$ (Y_i^1 , Y_i^0) $.\
+This can also be expressed as: on average, the potential outcomes for the treatment and control groups should be the same on a population.
+This is an assumption because true independence is rarely achievable in observational data.
+Every decision is influenced, however subtly, by some underlying factors.\
+For example, a student choosing their bachelors degree is making an outcome-driven decision, influenced by expected future earnings, interests, or job prospects.
+These things will always hinder the approximations of true causal effects.
+
+
+Here, we introduce one of the coolest-sounding terms in causal inference: **SUTVA** *Stable Unit Treatment Value Assumption*.
+SUTVA asks us to ensure a few simple but important checks to credibly estimate treatment effects from data:
+
+- ***Homogeneity of treatment***: Everyone receiving the treatment should receive the same version of it. 
+Example, in the headache experiment, we can't have some participants taking aspirin while others take opioids. The treatment must be uniform across all units.
+- ***No interference between units***: The outcome for one unit should not be affected by the treatment status of another.
+For instance, if fertilizers applied to treatment plots leaches into control plots, it violates this assumption because the control group is indirectly exposed to the treatment.
+
+
+SUTVA ensures that **potential outcomes** are well defined and non-interacting(insulated from each other).\
+With this **PO Framework** gains its formal structure, yet to extract and identify the causal effects from this framework
+we need a cogent experment design, this is something we have touched on before, and it bears repeating: Causal inference intrinsically relies on experiment design,
+At the crux of every valid identification strategy lies a crucial component that must addresed head-on ***Randomization***.
+
+## Randomization
+
+***Nothing in this world is truly random — unless Tommy Wiseau is directing it!***\
+Jokes aside, randomization plays a crucial role in research, it helps mitigate bias from unobserved confounders that might otherwise distort effect estimates.
+Think of randomization as the *deus ex machina against unobserved confounders*, we can eliminate selection bias and avoid many of the challeges inherent in observational studies
+because the assignment is random and does not depend on the units' characteristics, including their potential outcomes, the assignment mechanism itself justifies the causal inference.
+Randomized experiments are widely viewed as providing the most **most credible evidence on causal effects.**\
+Lets see what are the things that randomization helps us achieve:
+$$
+\begin{align*}
+\Delta{\tiny \text{Estimation Error}}
+ &= \text{ATE} - \text{DIM} \quad \text{\scriptsize(DIM: Difference in Means estimator)} \\
+ &= \text{ATE} - (\bar{Y}_1 - \bar{Y}_0) \\
+\end{align*}
+$$
+
+$\Delta$ can be further decomposed into,
+$$
+\begin{align*}
+\Delta &= \underbrace{\Delta_S}_{\text{Selection bias}} + \underbrace{\Delta_T}_{\text{Treatment Heterogeneity bias}}.
+\end{align*}
+$$
+each of the terms further decompose to,
+$$
+\begin{align*}
+\Delta_S &= \mathop{\Delta_{S_X}}\limits_{\text{\scriptsize obs}} + \mathop{\Delta_{S_U}}\limits_{\text{\scriptsize unobs}} \\
+\Delta_T &= \mathop{\Delta_{T_X}}\limits_{\text{\scriptsize obs}} + \mathop{\Delta_{T_U}}\limits_{\text{\scriptsize unobs}}
+\end{align*}
+$$
+
+To get an unbiased true effect we must make sure that, observed and unobserved selection bias vanishes, and so does treatment heterogeneity.
+Our goal is to identify that the difference between the treatment and the control groups is because of the treatment itself and not by some random chance or any systematic phenomenon.
+<table>
+  <thead>
+    <tr>
+      <th>Design</th>
+      <th>$\Delta_{S_X}$</th>
+      <th>$\Delta_{S_U}$</th>
+      <th>$\Delta_{T_X}$</th>
+      <th>$\Delta_{T_U}$</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ideal experiment</td>
+      <td>$\to 0$</td>
+      <td>$\to 0$</td>
+      <td>$= 0$</td>
+      <td>$\to 0$</td>
+    </tr>
+    <tr>
+      <td>RCT (no/limited blocking)</td>
+      <td>$\neq 0$</td>
+      <td>$\neq 0$</td>
+      <td>$\overset{\mathrm{avg}}{=}0$</td>
+      <td>$\overset{\mathrm{avg}}{=}0$</td>
+    </tr>
+    <tr>
+      <td>RCT (full blocking)</td>
+      <td>$\neq 0$</td>
+      <td>$\neq 0$</td>
+      <td>$= 0$</td>
+      <td>$\overset{\mathrm{avg}}{=}0$</td>
+    </tr>
+    <tr>
+      <td>Social science field experiment</td>
+      <td>$\neq 0$</td>
+      <td>$\neq 0$</td>
+      <td>$\to 0$</td>
+      <td>$\to 0$</td>
+    </tr>
+    <tr>
+      <td>Survey experiment (limited/no blocking)</td>
+      <td>$\to 0$</td>
+      <td>$\to 0$</td>
+      <td>$\to 0$</td>
+      <td>$\to 0$</td>
+    </tr>
+    <tr>
+      <td>Observational (well‑matched, representative)</td>
+      <td>$\approx 0$</td>
+      <td>$\approx 0$</td>
+      <td>$\approx 0$</td>
+      <td>$\neq 0$</td>
+    </tr>
+    <tr>
+      <td>Observational (partial adjust)</td>
+      <td>$\approx 0$</td>
+      <td>$\neq 0$</td>
+      <td>$\approx 0$</td>
+      <td>$\neq 0$</td>
+    </tr>
+    <tr>
+      <td>Observational (unrepresentative)</td>
+      <td>$\neq 0$</td>
+      <td>$\neq 0$</td>
+      <td>$\approx 0$</td>
+      <td>$\neq 0$</td>
+    </tr>
+  </tbody>
+</table>
+
+In essence, randomized experiments provide a strong foundation for causal inference by creating comparable groups through a transparent and known assignment mechanism, thereby eliminating selection bias and justifying statistical methods that rely minimally on untestable assumptions.
+This aligns with the perspective of analyzing "experiments as experiments".
+Although randomized experiments are highly credible within the population under study, it does not gaurantee us that these results would generalize to different populations, treatments and settings.
+There are still a few aspects of randomized experiments I'd like to cover like, ***Fisher's exact test***, but this paper [Fisher's Randomization Test for Causality with General Types of Treatments](https://arxiv.org/html/2501.06864v1) explains it so clearly and thoroughly that it's a must-read.
+
+
+And with that, we wrap up this post.\
+Next, we'll dive into ***graphical causal models*** — a powerful way to visualize cause and effect, And I'll finally get to talk about the person who first drew me into the world of causality.

@@ -11,20 +11,17 @@ export default function PerfectEmbed({
 }) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  // Handle both same-origin and refresh cases
   const resizeIframe = () => {
     const iframe = iframeRef.current;
     if (!iframe) return;
 
     try {
-      // Method 1: Direct access (same origin)
       if (iframe.contentDocument?.body) {
         const height = iframe.contentDocument.body.scrollHeight;
         iframe.style.height = `${height}px`;
         return;
       }
 
-      // Method 2: postMessage fallback
       iframe.contentWindow?.postMessage({ type: 'height-request' }, '*');
     } catch (error) {
       console.log('Resize attempt failed:', error);
@@ -35,7 +32,6 @@ export default function PerfectEmbed({
     const iframe = iframeRef.current;
     if (!iframe) return;
 
-    // Listen for postMessage responses
     const handleMessage = (event: MessageEvent) => {
       if (event.data.type === 'height-response') {
         iframe.style.height = `${event.data.height}px`;
@@ -43,7 +39,7 @@ export default function PerfectEmbed({
     };
 
     window.addEventListener('message', handleMessage);
-    const timer = setInterval(resizeIframe, 1000); // Fallback interval
+    const timer = setInterval(resizeIframe, 1000);
 
     return () => {
       window.removeEventListener('message', handleMessage);
@@ -51,11 +47,14 @@ export default function PerfectEmbed({
     };
   }, []);
 
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const normalizedSrc = `${basePath.replace(/\/$/, '')}/${htmlPath.replace(/^\//, '')}`;
+
   return (
     <iframe
       ref={iframeRef}
-      src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/${htmlPath}`}
-      className={`w-full overflow-hidden border border-gray-300 p-4 rounded-lg bg-white shadow-sm m-3" ${className}`}
+      src={normalizedSrc}
+      className={`w-full overflow-hidden border border-gray-300 p-4 rounded-lg bg-white shadow-sm m-3 ${className}`}
       loading="lazy"
       onLoad={resizeIframe}
     />

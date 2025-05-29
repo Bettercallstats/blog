@@ -7,6 +7,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import rehypePrism from 'rehype-prism-plus';
 
+import 'katex/dist/katex.min.css';
 import PythonRunner from '@/components/PythonRunner';
 import AutoHeightEmbed from '@/components/AutoHeightEmbed';
 

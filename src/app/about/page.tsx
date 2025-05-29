@@ -28,7 +28,7 @@ export default function About() {
       <div className="mb-12 flex flex-col lg:flex-row items-center gap-6">
         <div className="relative w-40 h-56 shrink-0 rounded-xl overflow-hidden border border-gray-300 shadow-md">
           <Image
-            src="dp.png"
+            src="/dp.png"
             alt="Profile Picture"
             layout="fill"
             className="object-cover"
