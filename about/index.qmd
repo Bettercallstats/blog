@@ -19,37 +19,26 @@ about:
       href: ../index.xml
 ---
 
-## Hello
 
-I'm Madhusudan, an applied statistician. I trained as a computer science
-engineer and moved into statistics through the work itself: first randomised evaluations,
-then causal inference on observational data, and now methodology for official statistics.
+I'm Madhusudan, an applied statistician. I trained as a computer science engineer and came
+to statistics through the work. I started with randomised evaluations, moved on to causal
+questions where nobody had randomised anything, and now design methods for official
+statistics, where the job is turning messy administrative records into numbers people can
+rely on.
 
-BetterCallStats is where I write down what I've learned, mostly so that I understand it
-properly. If I can't explain a method from the assumptions up, with code that runs, I
-don't really know it yet.
+Most of what interests me sits where those meet: working out cause and effect when you
+can't run the experiment, dealing with data that is missing or wrong, and taking location
+seriously when where something happens is part of the answer. I lean Bayesian, and I work
+in Python, R and SQL.
 
-## What I work on
+I started BetterCallStats to write these things down properly. My test for whether I
+understand a method is whether I can explain it from its assumptions, show the maths, and
+back it with code that runs. Each post is an attempt to pass that test. Where it helps,
+small examples run in your browser, so you can change a number and see what moves.
 
-- **Causal inference.** Experiments and what to do when you can't run one: matching,
-  difference-in-differences, DAGs and survival models.
-- **Spatial statistics.** Spatial regression and modelling data where location matters.
-- **Survey and official statistics.** Editing and imputation, missing data, and how to
-  measure whether a method is doing its job.
-- **Bayesian modelling.** Mostly PyMC and brms.
-- **Tools.** Python, R and SQL, with a preference for code that can be tested.
+If you're new here, start with [Alphabets of Causality](../posts/alphabets_causality/index.qmd),
+the first post in a series on causal inference.
 
-## What to expect here
-
-- Posts that start from a question, state their assumptions, and show the maths.
-- Code you can read in full. Small examples run in your browser, so you can change a
-  number and see what happens.
-- Series, not one-offs. The first is on causal inference, starting with
-  [Alphabets of Causality](../posts/alphabets_causality/index.qmd).
-- Book and paper recommendations along the way.
-
-## Get in touch
-
-Spotted a mistake, or disagree with something? I'd like to hear it. Message me on
+If you spot a mistake or see something differently, I'd like to hear it. Message me on
 [LinkedIn](https://www.linkedin.com/in/madhusudan-chunletia-83a623210) or open an issue on the
 [blog's repository](https://github.com/Bettercallstats/blog/issues).
