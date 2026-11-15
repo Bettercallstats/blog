@@ -1,0 +1,7 @@
+# Defaults for every post
+author: "Madhusudan Chunletia"
+title-block-banner: false
+execute:
+  freeze: auto      # code runs on your machine; results are stored in _freeze/ and committed
+  echo: true
+  warning: false

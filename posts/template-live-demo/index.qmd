@@ -1,0 +1,37 @@
+---
+title: "Template: a post with runnable code"
+date: "2026-11-15"
+description: "Copy this folder to start a post. It stays a draft, so it never appears on the live site."
+categories: [template]
+draft: true
+format: live-html
+engine: markdown
+pyodide:
+  packages: [numpy, pandas]
+---
+
+There are two kinds of code cell.
+
+## 1. Runs in the reader's browser
+
+Use `{pyodide}` for small demos (numpy, pandas). The reader can edit and re-run it.
+
+```{pyodide}
+import numpy as np
+
+rng = np.random.default_rng(1)
+p_missing = 0.3                      # try changing this
+x = rng.normal(50, 10, size=1000)
+observed = x[rng.random(1000) > p_missing]
+print(f"true mean {x.mean():.2f}, observed mean {observed.mean():.2f}, n = {observed.size}")
+```
+
+## 2. Runs on your machine, results are stored
+
+Use `{python}` or `{r}` for anything heavy (PyMC, brms). Render the post locally once;
+the outputs are saved under `_freeze/` and committed, so the website build never re-fits the model.
+
+```python
+# shown here as plain code; change the fence to {python} to have Quarto run it
+import pymc as pm
+```
