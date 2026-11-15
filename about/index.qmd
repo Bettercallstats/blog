@@ -1,11 +1,12 @@
 ---
-title: "About BetterCallStats"
+title: "Madhusudan Chunletia"
+subtitle: "Applied statistician. I write BetterCallStats."
 image: ../assets/dp.png
 toc: false
 about:
   template: trestles
   image-shape: rounded
-  image-width: 14em
+  image-width: 13em
   links:
     - icon: linkedin
       text: LinkedIn
@@ -13,19 +14,41 @@ about:
     - icon: github
       text: GitHub
       href: https://github.com/aragornchunletia
+    - icon: rss
+      text: RSS
+      href: ../index.xml
 ---
 
-This blog is my little corner of the internet where I geek out about everything I love or happen to understand.
+## Hello
 
-## What we cover
+I'm Madhusudan, an applied statistician based in India. I trained as a computer science
+engineer and moved into statistics through the work itself: first randomised evaluations,
+then causal inference on observational data, and now methodology for official statistics.
 
-- Statistical analysis
-- Inferential techniques
-- Machine learning applications
-- Programming with Python and R
-- Textbook recommendations
+BetterCallStats is where I write down what I've learned, mostly so that I understand it
+properly. If I can't explain a method from the assumptions up, with code that runs, I
+don't really know it yet.
 
-## About me
+## What I work on
 
-Hola amigos! I'm an engineer with a love for stats and a knack for storytelling.
-I believe that data is not just numbers; it's a narrative waiting to be told.
+- **Causal inference.** Experiments and what to do when you can't run one: matching,
+  difference-in-differences, DAGs, survival and spatial models.
+- **Survey and official statistics.** Editing and imputation, missing data, and how to
+  measure whether a method is doing its job.
+- **Bayesian modelling.** Mostly PyMC and brms.
+- **Tools.** Python, R and SQL, with a preference for code that can be tested.
+
+## What to expect here
+
+- Posts that start from a question, state their assumptions, and show the maths.
+- Code you can read in full. Small examples run in your browser, so you can change a
+  number and see what happens.
+- Series, not one-offs. The first is on causal inference, starting with
+  [Alphabets of Causality](../posts/alphabets_causality/index.qmd).
+- Book and paper recommendations along the way.
+
+## Get in touch
+
+Spotted a mistake, or disagree with something? I'd like to hear it. Message me on
+[LinkedIn](https://www.linkedin.com/in/madhusudan-chunletia-83a623210) or open an issue on the
+[blog's repository](https://github.com/Bettercallstats/blog/issues).
