@@ -1,0 +1,31 @@
+---
+title: "About BetterCallStats"
+image: ../assets/dp.png
+toc: false
+about:
+  template: trestles
+  image-shape: rounded
+  image-width: 14em
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/madhusudan-chunletia-83a623210
+    - icon: github
+      text: GitHub
+      href: https://github.com/aragornchunletia
+---
+
+This blog is my little corner of the internet where I geek out about everything I love or happen to understand.
+
+## What we cover
+
+- Statistical analysis
+- Inferential techniques
+- Machine learning applications
+- Programming with Python and R
+- Textbook recommendations
+
+## About me
+
+Hola amigos! I'm an engineer with a love for stats and a knack for storytelling.
+I believe that data is not just numbers; it's a narrative waiting to be told.

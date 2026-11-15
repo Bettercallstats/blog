@@ -1,0 +1,13 @@
+---
+title: "Posts"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  fields: [date, title, description, categories, reading-time]
+  feed: true
+  page-size: 20
+toc: false
+title-block-banner: false
+---

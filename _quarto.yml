@@ -1,0 +1,53 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - google7f64286048a790e7.html
+  render:
+    - "*.qmd"
+    - "posts/**/*.qmd"
+    - "about/*.qmd"
+    - "!README.md"
+
+website:
+  title: "BetterCallStats"
+  description: "Notes on statistics, causal inference and official statistics."
+  site-url: https://bettercallstats.github.io/blog
+  repo-url: https://github.com/Bettercallstats/blog
+  draft-mode: gone          # drafts show in `quarto preview`, never on the live site
+  open-graph: true
+  twitter-card: true
+  page-navigation: false
+  navbar:
+    left:
+      - text: Posts
+        href: index.qmd
+      - text: About
+        href: about/index.qmd
+    right:
+      - icon: rss
+        href: index.xml
+        aria-label: RSS feed
+      - icon: github
+        href: https://github.com/aragornchunletia
+        aria-label: GitHub
+  page-footer:
+    center: "© Madhusudan Chunletia"
+
+format:
+  html:
+    theme:
+      light: [cosmo, styles/theme.scss]
+      dark: [cosmo, styles/theme.scss, styles/theme-dark.scss]
+    html-math-method: katex
+    toc: true
+    toc-depth: 3
+    toc-title: "On this page"
+    code-copy: true
+    code-overflow: scroll
+    highlight-style:
+      light: github
+      dark: github-dark
+    link-external-newwindow: true
+    smooth-scroll: true
+    lang: en

@@ -1,0 +1,42 @@
+/*-- scss:defaults --*/
+$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-monospace: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+$font-size-root: 17px;
+$line-height-base: 1.7;
+$body-color: #1f2328;
+$link-color: #0b5cad;
+$navbar-bg: #1f2937;
+$navbar-fg: #f3f4f6;
+$navbar-hl: #ffffff;
+$footer-bg: transparent;
+$headings-font-weight: 650;
+$code-color: #8a2d5c;
+
+/*-- scss:rules --*/
+main.content { max-width: 46rem; }
+
+h2 { margin-top: 2.4rem; border-bottom: none; padding-bottom: 0; }
+h3 { margin-top: 1.8rem; }
+.title { font-weight: 700; letter-spacing: -0.01em; }
+.quarto-title-meta { font-size: 0.9rem; }
+
+/* Listing */
+.quarto-listing-default .list-item { border-bottom: 1px solid rgba(127,127,127,.25); padding: 1.2rem 0; }
+.quarto-listing-default .listing-title { font-size: 1.35rem; font-weight: 650; }
+
+/* Tables and maths never push the page sideways */
+.table-responsive, .katex-display { overflow-x: auto; overflow-y: hidden; }
+table { font-size: 0.95rem; }
+
+/* Boxes used in posts: ::: {.box} and ::: {.box .box-key} */
+.box {
+  border: 1px solid rgba(127,127,127,.3);
+  border-left: 4px solid $link-color;
+  border-radius: 6px;
+  padding: 0.25rem 1.1rem;
+  margin: 1.5rem 0;
+  background: rgba(11, 92, 173, 0.05);
+}
+.box-key { border-left-color: #6b7280; background: rgba(107, 114, 128, 0.1); }
+
+figure img, p img { border-radius: 6px; }
