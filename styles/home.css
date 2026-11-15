@@ -1,0 +1,22 @@
+/* Home page only */
+#title-block-header { display: none; }
+main.content { max-width: 56rem; }
+.hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 2.5rem; align-items: end; padding: 2.5rem 0 3rem; border-bottom: 1px solid var(--rule); }
+h1.hero-title { font-size: clamp(2.2rem, 5vw, 3.3rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.02; margin: 0 0 1.2rem; text-wrap: balance; }
+.hero-text p { font-size: 1.2rem !important; color: var(--quiet); max-width: 34rem; margin: 0; }
+.hero-plot { width: 100%; height: auto; overflow: visible; }
+.hero-area { fill: var(--accent); opacity: 0.1; }
+.hero-curve { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.hero-axis { stroke: var(--ink); stroke-width: 1.5; }
+.hero-rug line { stroke: var(--mark); stroke-width: 2.5; stroke-linecap: round; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-curve { animation: draw 1.6s ease-out 0.2s both; }
+  .hero-area { animation: fill 0.8s ease-out 1.5s both; }
+  .hero-rug line { animation: fill 0.5s ease-out both; }
+  @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+  @keyframes fill { from { opacity: 0; } }
+}
+h2.posts-heading { font-size: 1.1rem; font-weight: 700; margin: 2.2rem 0 0; color: var(--quiet); letter-spacing: 0; }
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; gap: 1.5rem; padding-top: 1.5rem; }
+}

@@ -3,6 +3,7 @@ project:
   output-dir: _site
   resources:
     - google7f64286048a790e7.html
+    - assets/fonts
   render:
     - "*.qmd"
     - "posts/**/*.qmd"
@@ -37,8 +38,9 @@ website:
 format:
   html:
     theme:
-      light: [cosmo, styles/theme.scss]
-      dark: [cosmo, styles/theme.scss, styles/theme-dark.scss]
+      light: [default, styles/theme.scss]
+      dark: [default, styles/theme.scss, styles/theme-dark.scss]
+    css: assets/fonts/fonts.css
     canonical-url: true
     html-math-method: katex
     toc: true

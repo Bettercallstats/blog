@@ -1,10 +1,20 @@
 /*-- scss:defaults --*/
-$body-bg: #14171c;
-$body-color: #e3e6ea;
-$link-color: #7ab8f5;
-$navbar-bg: #0e1116;
-$code-color: #f0a8cc;
+$paper: #10171F;
+$ink: #E4E9F0;
+$cobalt: #93A5FF;
+$slate: #9AA7B8;
+$body-bg: $paper;
+$body-color: $ink;
+$link-color: $cobalt;
+$navbar-bg: $paper;
+$navbar-fg: $ink;
+$navbar-hl: $cobalt;
+$code-color: #F2A3CC;
+$code-bg: rgba(228, 233, 240, 0.08);
 
 /*-- scss:rules --*/
-.box { background: rgba(122, 184, 245, 0.08); }
-.box-key { background: rgba(160, 168, 180, 0.12); }
+:root {
+  --ink: #{$ink}; --paper: #{$paper}; --accent: #{$cobalt}; --quiet: #{$slate};
+  --rule: rgba(228, 233, 240, 0.18);
+  --rug: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='7'%3E%3Cg stroke='%23C9D2E0' stroke-width='1.2'%3E%3Cpath d='M8.9 0v7'/%3E%3Cpath d='M54.9 0v7'/%3E%3Cpath d='M57.1 0v7'/%3E%3Cpath d='M67.3 0v7'/%3E%3Cpath d='M83.4 0v7'/%3E%3Cpath d='M84.5 0v7'/%3E%3Cpath d='M89.5 0v7'/%3E%3Cpath d='M101.1 0v7'/%3E%3Cpath d='M123.2 0v7'/%3E%3Cpath d='M125.7 0v7'/%3E%3Cpath d='M126.5 0v7'/%3E%3Cpath d='M131.4 0v7'/%3E%3Cpath d='M131.4 0v7'/%3E%3Cpath d='M137.4 0v7'/%3E%3Cpath d='M155.2 0v7'/%3E%3Cpath d='M158.0 0v7'/%3E%3Cpath d='M161.3 0v7'/%3E%3Cpath d='M170.9 0v7'/%3E%3Cpath d='M188.9 0v7'/%3E%3Cpath d='M192.4 0v7'/%3E%3Cpath d='M194.2 0v7'/%3E%3Cpath d='M195.6 0v7'/%3E%3Cpath d='M197.1 0v7'/%3E%3Cpath d='M200.3 0v7'/%3E%3Cpath d='M204.1 0v7'/%3E%3Cpath d='M208.8 0v7'/%3E%3Cpath d='M210.0 0v7'/%3E%3Cpath d='M216.4 0v7'/%3E%3Cpath d='M219.5 0v7'/%3E%3Cpath d='M221.9 0v7'/%3E%3Cpath d='M228.4 0v7'/%3E%3Cpath d='M229.0 0v7'/%3E%3Cpath d='M233.6 0v7'/%3E%3Cpath d='M241.9 0v7'/%3E%3Cpath d='M248.0 0v7'/%3E%3Cpath d='M252.7 0v7'/%3E%3Cpath d='M255.5 0v7'/%3E%3Cpath d='M262.1 0v7'/%3E%3Cpath d='M265.4 0v7'/%3E%3Cpath d='M267.6 0v7'/%3E%3Cpath d='M268.8 0v7'/%3E%3Cpath d='M272.7 0v7'/%3E%3Cpath d='M287.9 0v7'/%3E%3Cpath d='M331.1 0v7'/%3E%3Cpath d='M336.0 0v7'/%3E%3Cpath d='M356.4 0v7'/%3E%3Cpath d='M433.8 0v7'/%3E%3Cpath d='M445.2 0v7'/%3E%3Cpath d='M457.5 0v7'/%3E%3Cpath d='M473.2 0v7'/%3E%3Cpath d='M475.5 0v7'/%3E%3Cpath d='M476.8 0v7'/%3E%3Cpath d='M489.4 0v7'/%3E%3Cpath d='M491.6 0v7'/%3E%3Cpath d='M493.9 0v7'/%3E%3Cpath d='M493.9 0v7'/%3E%3Cpath d='M505.6 0v7'/%3E%3Cpath d='M506.9 0v7'/%3E%3Cpath d='M508.8 0v7'/%3E%3Cpath d='M512.7 0v7'/%3E%3Cpath d='M515.9 0v7'/%3E%3Cpath d='M517.1 0v7'/%3E%3Cpath d='M517.1 0v7'/%3E%3Cpath d='M527.8 0v7'/%3E%3Cpath d='M528.7 0v7'/%3E%3Cpath d='M531.0 0v7'/%3E%3Cpath d='M531.4 0v7'/%3E%3Cpath d='M534.7 0v7'/%3E%3Cpath d='M537.8 0v7'/%3E%3Cpath d='M543.8 0v7'/%3E%3Cpath d='M551.6 0v7'/%3E%3Cpath d='M554.6 0v7'/%3E%3Cpath d='M558.6 0v7'/%3E%3Cpath d='M564.3 0v7'/%3E%3Cpath d='M565.3 0v7'/%3E%3Cpath d='M569.5 0v7'/%3E%3Cpath d='M570.0 0v7'/%3E%3Cpath d='M603.1 0v7'/%3E%3Cpath d='M609.9 0v7'/%3E%3Cpath d='M637.9 0v7'/%3E%3Cpath d='M684.0 0v7'/%3E%3Cpath d='M698.7 0v7'/%3E%3Cpath d='M700.2 0v7'/%3E%3Cpath d='M702.7 0v7'/%3E%3Cpath d='M714.4 0v7'/%3E%3Cpath d='M716.2 0v7'/%3E%3Cpath d='M719.6 0v7'/%3E%3Cpath d='M750.6 0v7'/%3E%3Cpath d='M768.3 0v7'/%3E%3Cpath d='M770.4 0v7'/%3E%3Cpath d='M778.8 0v7'/%3E%3Cpath d='M794.9 0v7'/%3E%3Cpath d='M799.8 0v7'/%3E%3Cpath d='M800.7 0v7'/%3E%3Cpath d='M806.9 0v7'/%3E%3Cpath d='M807.0 0v7'/%3E%3Cpath d='M818.8 0v7'/%3E%3Cpath d='M819.8 0v7'/%3E%3Cpath d='M837.1 0v7'/%3E%3Cpath d='M857.2 0v7'/%3E%3Cpath d='M872.9 0v7'/%3E%3Cpath d='M875.9 0v7'/%3E%3Cpath d='M879.2 0v7'/%3E%3Cpath d='M883.8 0v7'/%3E%3Cpath d='M884.5 0v7'/%3E%3Cpath d='M886.2 0v7'/%3E%3Cpath d='M889.7 0v7'/%3E%3Cpath d='M896.6 0v7'/%3E%3Cpath d='M934.0 0v7'/%3E%3Cpath d='M976.4 0v7'/%3E%3Cpath d='M986.8 0v7'/%3E%3Cpath d='M991.1 0v7'/%3E%3Cpath d='M994.7 0v7'/%3E%3Cpath d='M996.8 0v7'/%3E%3Cpath d='M997.5 0v7'/%3E%3Cpath d='M1001.4 0v7'/%3E%3Cpath d='M1001.4 0v7'/%3E%3Cpath d='M1001.5 0v7'/%3E%3Cpath d='M1005.4 0v7'/%3E%3Cpath d='M1010.2 0v7'/%3E%3Cpath d='M1010.7 0v7'/%3E%3Cpath d='M1012.8 0v7'/%3E%3Cpath d='M1013.3 0v7'/%3E%3Cpath d='M1014.1 0v7'/%3E%3Cpath d='M1017.9 0v7'/%3E%3Cpath d='M1020.3 0v7'/%3E%3Cpath d='M1025.6 0v7'/%3E%3Cpath d='M1027.1 0v7'/%3E%3Cpath d='M1034.4 0v7'/%3E%3Cpath d='M1037.7 0v7'/%3E%3Cpath d='M1041.4 0v7'/%3E%3Cpath d='M1043.3 0v7'/%3E%3Cpath d='M1044.3 0v7'/%3E%3Cpath d='M1044.6 0v7'/%3E%3Cpath d='M1046.6 0v7'/%3E%3Cpath d='M1050.1 0v7'/%3E%3Cpath d='M1050.3 0v7'/%3E%3Cpath d='M1051.0 0v7'/%3E%3Cpath d='M1055.3 0v7'/%3E%3Cpath d='M1059.3 0v7'/%3E%3Cpath d='M1059.5 0v7'/%3E%3Cpath d='M1065.6 0v7'/%3E%3Cpath d='M1068.7 0v7'/%3E%3Cpath d='M1079.1 0v7'/%3E%3Cpath d='M1088.4 0v7'/%3E%3Cpath d='M1090.2 0v7'/%3E%3Cpath d='M1094.3 0v7'/%3E%3Cpath d='M1095.1 0v7'/%3E%3Cpath d='M1102.4 0v7'/%3E%3Cpath d='M1106.8 0v7'/%3E%3C/g%3E%3C/svg%3E");
+}
