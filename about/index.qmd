@@ -21,7 +21,7 @@ about:
 
 ## Hello
 
-I'm Madhusudan, an applied statistician based in India. I trained as a computer science
+I'm Madhusudan, an applied statistician. I trained as a computer science
 engineer and moved into statistics through the work itself: first randomised evaluations,
 then causal inference on observational data, and now methodology for official statistics.
 
@@ -32,7 +32,8 @@ don't really know it yet.
 ## What I work on
 
 - **Causal inference.** Experiments and what to do when you can't run one: matching,
-  difference-in-differences, DAGs, survival and spatial models.
+  difference-in-differences, DAGs and survival models.
+- **Spatial statistics.** Spatial regression and modelling data where location matters.
 - **Survey and official statistics.** Editing and imputation, missing data, and how to
   measure whether a method is doing its job.
 - **Bayesian modelling.** Mostly PyMC and brms.
