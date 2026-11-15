@@ -28,8 +28,7 @@ rely on.
 
 Most of what interests me sits where those meet: working out cause and effect when you
 can't run the experiment, dealing with data that is missing or wrong, and taking location
-seriously when where something happens is part of the answer. I lean Bayesian, and I work
-in Python, R and SQL.
+seriously when where something happens is part of the answer. When there is a choice, I lean Bayesian.
 
 I started BetterCallStats to write these things down properly. My test for whether I
 understand a method is whether I can explain it from its assumptions, show the maths, and
