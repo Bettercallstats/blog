@@ -39,6 +39,7 @@ format:
     theme:
       light: [cosmo, styles/theme.scss]
       dark: [cosmo, styles/theme.scss, styles/theme-dark.scss]
+    canonical-url: true
     html-math-method: katex
     toc: true
     toc-depth: 3
