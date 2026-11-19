@@ -8,6 +8,7 @@ project:
     - "*.qmd"
     - "posts/**/*.qmd"
     - "about/*.qmd"
+    - "subscribe/*.qmd"
     - "!README.md"
 
 website:
@@ -27,8 +28,8 @@ website:
         href: about/index.qmd
     right:
       - icon: rss
-        href: index.xml
-        aria-label: RSS feed
+        href: https://bettercallstats.github.io/blog/subscribe/
+        aria-label: Follow by RSS
       - icon: github
         href: https://github.com/aragornchunletia
         aria-label: GitHub
@@ -42,6 +43,9 @@ format:
       dark: [default, styles/theme.scss, styles/theme-dark.scss]
     css: assets/fonts/fonts.css
     canonical-url: true
+    include-in-header:
+      text: |
+        <link rel="alternate" type="application/rss+xml" title="BetterCallStats" href="https://bettercallstats.github.io/blog/index.xml">
     html-math-method: katex
     toc: true
     toc-depth: 3
