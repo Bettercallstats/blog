@@ -1,0 +1,30 @@
+---
+title: "Follow by RSS"
+description: "Get new posts in a feed reader."
+toc: false
+---
+
+RSS sends new posts to a feed reader, so you see them without visiting the site or giving anyone your email address.
+
+Add this address to your reader:
+
+```{=html}
+<div class="feed-box">
+  <code id="feed-url">https://bettercallstats.github.io/blog/index.xml</code>
+  <button type="button" class="btn btn-sm feed-copy" id="feed-copy">Copy</button>
+</div>
+<script>
+  document.getElementById('feed-copy').addEventListener('click', async function () {
+    const url = document.getElementById('feed-url').textContent;
+    try { await navigator.clipboard.writeText(url); this.textContent = 'Copied'; }
+    catch (e) { this.textContent = 'Select the address and copy it'; }
+  });
+</script>
+```
+
+Or subscribe in one click with
+[Feedly](https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Fbettercallstats.github.io%2Fblog%2Findex.xml)
+or [Inoreader](https://www.inoreader.com/?add_feed=https%3A%2F%2Fbettercallstats.github.io%2Fblog%2Findex.xml).
+Any other reader works with the address above.
+
+If you open the address directly in a browser you'll see raw code. That's normal: it is meant for feed readers, not for reading.

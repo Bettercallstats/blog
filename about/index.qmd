@@ -16,7 +16,7 @@ about:
       href: https://github.com/aragornchunletia
     - icon: rss
       text: RSS
-      href: ../index.xml
+      href: https://bettercallstats.github.io/blog/subscribe/
 ---
 
 
