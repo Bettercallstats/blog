@@ -1,0 +1,327 @@
+---
+title: "Counting a country without knocking on a single door"
+date: "2026-11-20"
+description: "How a register-based census works, and why it is not a free lunch."
+categories: [official statistics, census]
+---
+
+```{=html}
+<style>
+.viz { margin: 2.2rem 0; }
+.viz svg { width:100%; height:auto; display:block; font-family:"Bricolage Grotesque",system-ui,sans-serif; }
+.viz figcaption { font-style:italic; color:var(--quiet); font-size:0.95rem; margin-top:0.6rem; }
+.viz .lab { fill:var(--ink); } .viz .sub { fill:var(--quiet); }
+</style>
+```
+
+The last post ended with a question: how do you count a country without knocking on a single door?
+
+Denmark has had an answer since 1981. That year it ran [the first population and housing census in the world that was entirely register-based](https://content.iospress.com/articles/statistical-journal-of-the-iaos/sji00798). No enumerators. No forms. Nobody was asked anything. And still, at the end of it, Statistics Denmark knew how many people lived in the country, how old they were, where they lived, who they lived with and what work they did.
+
+The first time I read about this, my honest reaction was: that is not a census. A census is the thing with the enumerator and the clipboard. It took me a while to see that Denmark had not skipped the count. It had moved it. The counting had already happened, one record at a time, every time someone was born, moved house or started a job.
+
+This post is about how that works. And then, because I promised, about the bill.
+
+## Your life in records
+
+Try this. Think of everything the state has written down about you. Not in one file, just anywhere.
+
+<!-- fig:life -->
+```{=html}
+<figure class="viz">
+<svg viewBox="0 0 640 250" role="img" aria-label="A life line from birth to today. Six moments, birth, school, moving house, a degree, a first job and a marriage, each drop a record into a different office: the population register, the school register, the education register and the tax office.">
+<text x="8" y="22" class="sub" font-size="13">one life, left to right</text>
+<line x1="20" y1="70" x2="626" y2="70" stroke="var(--ink)" stroke-width="2.2"/>
+<path d="M626 64 L638 70 L626 76 Z" fill="var(--ink)"/>
+<text x="636" y="90" text-anchor="end" class="sub" font-size="12">today</text>
+<circle cx="62" cy="70" r="7" fill="var(--mark)" stroke="var(--ink)" stroke-width="1.2"/>
+<text x="62" y="54" text-anchor="middle" class="lab" font-size="15" font-weight="700">Born</text>
+<line x1="62" y1="78" x2="62" y2="110" stroke="var(--quiet)" stroke-width="1.3" stroke-dasharray="3 3"/>
+<rect x="4" y="110" width="116" height="50" rx="5" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+<text x="62" y="130" text-anchor="middle" class="lab" font-size="12.5" font-weight="600">birth registered</text>
+<text x="62" y="148" text-anchor="middle" class="sub" font-size="11.5">population register</text>
+<circle cx="165" cy="70" r="7" fill="var(--mark)" stroke="var(--ink)" stroke-width="1.2"/>
+<text x="165" y="54" text-anchor="middle" class="lab" font-size="15" font-weight="700">School</text>
+<line x1="165" y1="78" x2="165" y2="170" stroke="var(--quiet)" stroke-width="1.3" stroke-dasharray="3 3"/>
+<rect x="107" y="170" width="116" height="50" rx="5" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+<text x="165" y="190" text-anchor="middle" class="lab" font-size="12.5" font-weight="600">enrolled</text>
+<text x="165" y="208" text-anchor="middle" class="sub" font-size="11.5">school register</text>
+<circle cx="268" cy="70" r="7" fill="var(--mark)" stroke="var(--ink)" stroke-width="1.2"/>
+<text x="268" y="54" text-anchor="middle" class="lab" font-size="15" font-weight="700">Moves</text>
+<line x1="268" y1="78" x2="268" y2="110" stroke="var(--quiet)" stroke-width="1.3" stroke-dasharray="3 3"/>
+<rect x="210" y="110" width="116" height="50" rx="5" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+<text x="268" y="130" text-anchor="middle" class="lab" font-size="12.5" font-weight="600">new address</text>
+<text x="268" y="148" text-anchor="middle" class="sub" font-size="11.5">population register</text>
+<circle cx="371" cy="70" r="7" fill="var(--mark)" stroke="var(--ink)" stroke-width="1.2"/>
+<text x="371" y="54" text-anchor="middle" class="lab" font-size="15" font-weight="700">Degree</text>
+<line x1="371" y1="78" x2="371" y2="170" stroke="var(--quiet)" stroke-width="1.3" stroke-dasharray="3 3"/>
+<rect x="313" y="170" width="116" height="50" rx="5" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+<text x="371" y="190" text-anchor="middle" class="lab" font-size="12.5" font-weight="600">exam passed</text>
+<text x="371" y="208" text-anchor="middle" class="sub" font-size="11.5">education register</text>
+<circle cx="474" cy="70" r="7" fill="var(--mark)" stroke="var(--ink)" stroke-width="1.2"/>
+<text x="474" y="54" text-anchor="middle" class="lab" font-size="15" font-weight="700">Job</text>
+<line x1="474" y1="78" x2="474" y2="110" stroke="var(--quiet)" stroke-width="1.3" stroke-dasharray="3 3"/>
+<rect x="416" y="110" width="116" height="50" rx="5" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+<text x="474" y="130" text-anchor="middle" class="lab" font-size="12.5" font-weight="600">pay reported</text>
+<text x="474" y="148" text-anchor="middle" class="sub" font-size="11.5">tax office</text>
+<circle cx="577" cy="70" r="7" fill="var(--mark)" stroke="var(--ink)" stroke-width="1.2"/>
+<text x="577" y="54" text-anchor="middle" class="lab" font-size="15" font-weight="700">Marries</text>
+<line x1="577" y1="78" x2="577" y2="170" stroke="var(--quiet)" stroke-width="1.3" stroke-dasharray="3 3"/>
+<rect x="519" y="170" width="116" height="50" rx="5" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+<text x="577" y="190" text-anchor="middle" class="lab" font-size="12.5" font-weight="600">marriage registered</text>
+<text x="577" y="208" text-anchor="middle" class="sub" font-size="11.5">population register</text>
+</svg>
+<figcaption>Every step in a life leaves a record somewhere. No single office holds all of them.</figcaption>
+</figure>
+```
+<!-- /fig -->
+
+You were born, and the birth was registered. You started school, and the school put you on its roll. You moved, and gave the new address to someone. You got a degree, and the university reported it. You took a job, and your employer started reporting your pay to the tax office. You married, and that was registered too.
+
+None of these records was made for statistics. Each one was made so that some office could do its own job: collect tax, run a school, pay a pension, send a letter.
+
+::: {.box .box-key}
+
+***An administrative register is a list an office keeps about people (or buildings, or businesses) to do its own job, updated as things happen.***
+
+:::
+
+In most countries these lists sit in different offices, on different systems, often with different spellings of your name. The tax office knows your income but not your degree. The university knows your degree but not where you live today. Put together, they would describe you pretty well. Apart, each one knows a slice.
+
+So the real question is: can you put the slices back together?
+
+## Putting the pieces together
+
+The Nordic countries can, because of two things they built decades ago.
+
+The first is a **population register**: one central list of everyone who lives in the country and where they live, kept up to date. Births and deaths go in. Moves get reported. People arriving are added, people leaving are taken off. Denmark's Central Person Register, the CPR, [went live on 2 April 1968](https://doi.org/10.1007/s10654-014-9930-3).
+
+The second is a **personal identity number**: one number per person, the same in every office. Sweden has used its *personnummer* [since 1947](https://scb.se/contentassets/8d9d985ca9c84c6e8d879cc89a8ae479/ov9999_2016a01_br_be96br1601.pdf). Norway introduced its *fødselsnummer* [in 1964](https://www.ssb.no/befolkning/artikler-og-publikasjoner/50-arsjubilant-med-behov-for-oppgradering) and gave one to everyone who had been counted in the 1960 census. Denmark's came with the CPR in 1968, and Finland's [at the end of the 1960s](https://eventos.ibge.gov.br/smi2014/programacao/conferencias/possibilities-and-challenges-in-register-based-data-collection-finnish-experiences).
+
+The number is the quiet hero here. It is on your tax record, your school record, your hospital record, your pay slip. That is what lets a statistics office join a record from one register to the right record in another without guessing. The joining has a name, **record linkage**, and with a shared number it is close to trivial. Without one, it is a hard statistical problem of its own. (A story for another day.)
+
+Statisticians sometimes call the population register the **spine**, because everything else hangs off it.
+
+<!-- fig:spine -->
+```{=html}
+<figure class="viz">
+<svg viewBox="0 0 640 330" role="img" aria-label="Diagram: five registers, tax and earnings, employers, education, buildings and dwellings, and benefits, each join the population register through the personal identity number. A snapshot of the joined records on census day becomes the census.">
+<rect x="1" y="8" width="196" height="50" rx="6" fill="none" stroke="var(--rule)" stroke-width="1.5"/>
+<text x="14" y="29" class="lab" font-size="14" font-weight="600">Tax and earnings</text>
+<text x="14" y="47" class="sub" font-size="12">what you were paid</text>
+<path d="M198 33 L262 33" stroke="var(--quiet)" stroke-width="1.5"/>
+<rect x="210" y="24" width="40" height="18" rx="9" fill="var(--mark)" fill-opacity="0.35" stroke="var(--mark)" stroke-width="1"/>
+<text x="230" y="37" text-anchor="middle" class="lab" font-size="10" font-weight="700">ID</text>
+<rect x="1" y="72" width="196" height="50" rx="6" fill="none" stroke="var(--rule)" stroke-width="1.5"/>
+<text x="14" y="93" class="lab" font-size="14" font-weight="600">Employers</text>
+<text x="14" y="111" class="sub" font-size="12">where you work</text>
+<path d="M198 97 L262 97" stroke="var(--quiet)" stroke-width="1.5"/>
+<rect x="210" y="88" width="40" height="18" rx="9" fill="var(--mark)" fill-opacity="0.35" stroke="var(--mark)" stroke-width="1"/>
+<text x="230" y="101" text-anchor="middle" class="lab" font-size="10" font-weight="700">ID</text>
+<rect x="1" y="136" width="196" height="50" rx="6" fill="none" stroke="var(--rule)" stroke-width="1.5"/>
+<text x="14" y="157" class="lab" font-size="14" font-weight="600">Education</text>
+<text x="14" y="175" class="sub" font-size="12">your highest degree</text>
+<path d="M198 161 L262 161" stroke="var(--quiet)" stroke-width="1.5"/>
+<rect x="210" y="152" width="40" height="18" rx="9" fill="var(--mark)" fill-opacity="0.35" stroke="var(--mark)" stroke-width="1"/>
+<text x="230" y="165" text-anchor="middle" class="lab" font-size="10" font-weight="700">ID</text>
+<rect x="1" y="200" width="196" height="50" rx="6" fill="none" stroke="var(--rule)" stroke-width="1.5"/>
+<text x="14" y="221" class="lab" font-size="14" font-weight="600">Buildings and dwellings</text>
+<text x="14" y="239" class="sub" font-size="12">which flat you live in</text>
+<path d="M198 225 L262 225" stroke="var(--quiet)" stroke-width="1.5"/>
+<rect x="210" y="216" width="40" height="18" rx="9" fill="var(--mark)" fill-opacity="0.35" stroke="var(--mark)" stroke-width="1"/>
+<text x="230" y="229" text-anchor="middle" class="lab" font-size="10" font-weight="700">ID</text>
+<rect x="1" y="264" width="196" height="50" rx="6" fill="none" stroke="var(--rule)" stroke-width="1.5"/>
+<text x="14" y="285" class="lab" font-size="14" font-weight="600">Benefits and pensions</text>
+<text x="14" y="303" class="sub" font-size="12">what you receive</text>
+<path d="M198 289 L262 289" stroke="var(--quiet)" stroke-width="1.5"/>
+<rect x="210" y="280" width="40" height="18" rx="9" fill="var(--mark)" fill-opacity="0.35" stroke="var(--mark)" stroke-width="1"/>
+<text x="230" y="293" text-anchor="middle" class="lab" font-size="10" font-weight="700">ID</text>
+<rect x="264" y="8" width="132" height="306" rx="8" fill="var(--mark)" fill-opacity="0.22" stroke="var(--mark)" stroke-width="2"/>
+<text x="330" y="138" text-anchor="middle" class="lab" font-size="17" font-weight="700">Population</text>
+<text x="330" y="160" text-anchor="middle" class="lab" font-size="17" font-weight="700">register</text>
+<text x="330" y="190" text-anchor="middle" class="sub" font-size="12.5">everyone who</text>
+<text x="330" y="207" text-anchor="middle" class="sub" font-size="12.5">lives here,</text>
+<text x="330" y="224" text-anchor="middle" class="sub" font-size="12.5">and where</text>
+<path d="M398 161 L470 161" stroke="var(--ink)" stroke-width="2"/><path d="M466 155 L478 161 L466 167 Z" fill="var(--ink)"/>
+<text x="436" y="150" text-anchor="middle" class="sub" font-size="11.5">census day</text>
+<rect x="482" y="111" width="156" height="100" rx="6" fill="none" stroke="var(--ink)" stroke-width="1.8"/>
+<text x="560" y="150" text-anchor="middle" class="lab" font-size="17" font-weight="700">The census</text>
+<text x="560" y="172" text-anchor="middle" class="sub" font-size="12">a snapshot of the</text>
+<text x="560" y="188" text-anchor="middle" class="sub" font-size="12">joined records</text>
+</svg>
+<figcaption>Every register joins the population register through the same personal number. Freeze the joined records on one day and you have a census.</figcaption>
+</figure>
+```
+<!-- /fig -->
+
+Now pick a day, the **census day** (the reference date). Take a snapshot of the spine on that day, join every other register to it through the number, and you have a census.
+
+Remember the five features of a census from the last post? Check them off. Every person is recorded separately: yes, one record each. Everyone in the territory is covered: everyone on the spine. Everyone is counted as of the same moment: census day. It repeats at a fixed interval: it can repeat every year, and in practice it does. Small areas: the address goes down to the building and the flat.
+
+Finland ran [its first fully register-based census in 1990](https://stat.fi/tk/he/vaestolaskenta/vaestolask_historia_en.html). Norway [followed in 2011](https://ec.europa.eu/eurostat/cache/metadata/EN/cens_11r_esmscs_no.htm), and so did Sweden. And Denmark's 1981 census, the first of its kind, also turned out to be [the last census Denmark published](https://content.iospress.com/articles/statistical-journal-of-the-iaos/sji00798) as a census. Once the registers do the work, there is nothing special left to do once a decade. The statistics come out every year anyway, and the census tables are produced mostly to meet international commitments.
+
+Sweden's story is my favourite. It had the population register and the number since 1947, so why did it take until 2011? It had even [planned to go fully register-based for 2001](https://digitallibrary.un.org/record/596476/files/%5BE_%5DECE_CES_GE.41_2007_3-EN.pdf), but the registers for households and dwellings were still missing. The register knew which building you lived in, but not which flat. And without the flat you cannot tell who lives with whom, so you cannot build households. So [in 2010 and 2011](https://unstats.un.org/unsd/demographic/sources/census/wphc/Census_Posters/Sweden/Sweden_population.pdf) every apartment in the country got a four-digit number, and the Tax Agency wrote to people asking which apartment they lived in. A whole country was asked one question so that it would never have to be asked again. The [first fully register-based Swedish census](https://ww2.amstat.org/meetings/proceedings/2012/data/assets/pdf/303749_77679.pdf) followed in 2011, twenty-one years after its last census with questionnaires, in 1990.
+
+Neat, isn't it? It is. Now the part I promised.
+
+## Who counts as living here?
+
+Before you count anyone, you have to decide who counts. That sounds obvious. It is not.
+
+A tourist? No. Someone who arrived last week to start a two-year job? A student here for one semester? Someone who works here and goes home every weekend?
+
+The UN's census recommendations answer with a rule of thumb they call **usual residence**: [you belong to the place](https://unstats.un.org/unsd/demographic-social/Standards-and-Methods/files/Principles_and_Recommendations/Population-and-Housing-Censuses/Series_M67rev3-E.pdf) where you have lived for most of the last 12 months, or where you intend to live for at least 12 months.
+
+A register-based census does not apply that rule itself. It counts the people the population register says live in the country, and the register has its own rule, set in law for administrative reasons. Here is the interesting part: the Nordic neighbours do not agree on that rule. Denmark registers you as a resident if you intend to stay at least [three months](https://www.ssb.no/en/befolkning/statistikker/flytting/aar). Norway uses [six months](https://ec.europa.eu/eurostat/cache/metadata/EN/cens_21_esmscs21_no.htm). Sweden and Finland use a year.
+
+<!-- fig:residence -->
+```{=html}
+<figure class="viz">
+<svg viewBox="0 0 640 238" role="img" aria-label="Bar chart of how long you must stay or intend to stay to be registered as a resident: Denmark 3 months, Norway 6 months, Sweden 12 months, Finland 12 months. The UN recommends 12 months for the census.">
+<line x1="170" y1="10" x2="170" y2="196" stroke="var(--rule)" stroke-width="1"/>
+<text x="170" y="214" text-anchor="middle" class="sub" font-size="12">0</text>
+<line x1="278" y1="10" x2="278" y2="196" stroke="var(--rule)" stroke-width="1"/>
+<text x="278" y="214" text-anchor="middle" class="sub" font-size="12">3</text>
+<line x1="386" y1="10" x2="386" y2="196" stroke="var(--rule)" stroke-width="1"/>
+<text x="386" y="214" text-anchor="middle" class="sub" font-size="12">6</text>
+<line x1="494" y1="10" x2="494" y2="196" stroke="var(--rule)" stroke-width="1"/>
+<text x="494" y="214" text-anchor="middle" class="sub" font-size="12">9</text>
+<line x1="602" y1="10" x2="602" y2="196" stroke="var(--rule)" stroke-width="1"/>
+<text x="602" y="214" text-anchor="middle" class="sub" font-size="12">12</text>
+<text x="386" y="233" text-anchor="middle" class="sub" font-size="12">months you must stay, or intend to stay</text>
+<text x="160" y="34" text-anchor="end" class="lab" font-size="14" font-weight="600">Denmark</text>
+<rect x="170" y="19" width="108" height="22" rx="4" fill="var(--mark)" fill-opacity="0.45"/>
+<text x="286" y="35" text-anchor="start" class="lab" font-size="13" font-weight="600">3 months</text>
+<text x="160" y="70" text-anchor="end" class="lab" font-size="14" font-weight="600">Norway</text>
+<rect x="170" y="55" width="216" height="22" rx="4" fill="var(--mark)" fill-opacity="0.45"/>
+<text x="394" y="71" text-anchor="start" class="lab" font-size="13" font-weight="600">6 months</text>
+<text x="160" y="106" text-anchor="end" class="lab" font-size="14" font-weight="600">Sweden</text>
+<rect x="170" y="91" width="432" height="22" rx="4" fill="var(--mark)" fill-opacity="0.85"/>
+<text x="594" y="107" text-anchor="end" class="lab" font-size="13" font-weight="600">12 months</text>
+<text x="160" y="142" text-anchor="end" class="lab" font-size="14" font-weight="600">Finland</text>
+<rect x="170" y="127" width="432" height="22" rx="4" fill="var(--mark)" fill-opacity="0.85"/>
+<text x="594" y="143" text-anchor="end" class="lab" font-size="13" font-weight="600">12 months</text>
+<text x="160" y="178" text-anchor="end" class="lab" font-size="14" font-weight="400">UN recommendation</text>
+<rect x="170" y="163" width="432" height="22" rx="4" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="594" y="179" text-anchor="end" class="lab" font-size="13" font-weight="600">12 months</text>
+</svg>
+<figcaption>How long you must stay, or intend to stay, to be registered as living in the country. Four neighbours, three different rules.</figcaption>
+</figure>
+```
+<!-- /fig -->
+
+So picture someone who comes for eight months of work. In Denmark and Norway, they live there. In Sweden, they do not. Same person, same eight months, a different answer depending on which side of the border the job is.
+
+There is no universally right rule. Each of these is reasonable for what the register is for. But the number of people "living in the country" depends on the rule, and so does every number built on top of it: every rate per 1,000, every share of seats, every slice of money.
+
+Hold on to this one. It will come back in this series, in a bigger way.
+
+## The bill for the free lunch
+
+In the last post I quoted the cost: in the 2010 round, a traditional census cost a median of $5.57 per person, a fully register-based one $0.24. Twenty-three times cheaper. So where is the catch?
+
+Here is the bill. Six items.
+
+### 1. The registers themselves
+
+Remember the $0.24? It leaves out the most expensive part: the registers. When the Netherlands described its register-based census to other statistics offices, it said plainly that [the costs of the registers are not included](https://digitallibrary.un.org/record/572444/files/%5BE_%5DECE_CES_2006_28-EN.pdf), because registers are not kept up to date for the census but for other purposes. Dutch law even lets Statistics Netherlands [use government registers free of charge](https://www.czso.cz/documents/10180/20550323/32019715q1086.pdf). Someone else already paid.
+
+Someone always pays, and it takes a long time. Denmark's CPR came in 1968 and its first register census in 1981. Sweden had its number in 1947 and still needed until 2011, because of the flats. Austria did it more recently, and you can see every step. After its last traditional census in 2001, it set up a [Buildings and Dwellings Register in 2004](https://www.statistik.at/en/about-us/surveys/register-based-census/housing-census), passed a Register-based Census Act in 2006, ran [a full test census that October](https://International.ipums.org/international/resources/enum_materials_pdf/source_doc_at2011a.pdf) to check the registers were good enough, and only then, in 2011, counted without a single questionnaire.
+
+Germany shows what this costs at today's prices. It plans to move to a register census by 2031, and the wider programme to modernise and connect its public registers comes with [investment costs of about 2.5 billion euros](https://service.wirtschaft.nrw/en/hilfe/efa/nachnutzung/medienbruchfreier-nachweisabruf/projekt-gesamtsteuerung-registermodernisierung/onlinezugangsgesetz). That money is expected to pay for itself across the whole administration, not just the census. Even so, Germany [has no nationwide register of buildings and dwellings yet](https://www.destatis.de/EN/Themes/Society-Environment/Register-census/Methods/explanatory-notes.html), so for 2031 it will still have to survey every owner of residential space in the country.
+
+So the free lunch is really a lunch someone paid for decades earlier. If your country did not pay then, the bill comes first.
+
+### 2. People who left but are still on the books
+
+Leaving the country is the one move people forget to report. Nobody fines you once you are gone. So the register keeps you, and the census keeps counting you.
+
+Sweden has studied this more than most. Back in the late 1990s, Statistics Sweden [estimated](https://link.springer.com/10.1007/s11135-023-01757-x) that about 1% of Nordic migrants and 2.8% of other migrants on its register had in fact already left. It does not just inflate the total. Researchers at Stockholm University showed this year that once you correct for people who have quietly left, [employment and fertility rates turn out higher, and so do death rates](https://www.su.se/english/divisions/department-of-sociology/news/articles/2026-04-23-new-model-for-population-estimates-gives-more-reliable-results), especially at older ages. Part of the reason is grim and simple: some migrants go home and die there, and the death never reaches the Swedish register.
+
+### 3. People who are here but on no list
+
+The opposite problem. People who live in the country but appear in no register: people without papers, people waiting for a decision. In Norway, for example, asylum seekers [are not registered as residents](https://ec.europa.eu/eurostat/cache/metadata/EN/cens_11r_esmscs_no.htm) until they are granted a residence permit, even if they have already been there more than six months.
+
+A door-to-door enumerator at least has a chance of finding them. A register never will, because nobody ever wrote them down.
+
+::: {.box}
+
+Statisticians have names for these two:
+
+- **Overcoverage**: people counted who should not be (they left, or died abroad).
+- **Undercoverage**: people who should be counted but are not (they were never registered).
+
+They do not cancel out. They happen to different people in different places.
+
+:::
+
+### 4. Two registers, two answers
+
+Now take one person and two offices. The population register says she lives with her parents in a small town. The university says she has been studying in the capital for three years, and her employer has her at a café there. Which is true?
+
+Both were true once. One office was told about the move, the other was not. Every register-based census needs rules for whom to believe when sources disagree, and those rules are judgement calls made by people. Good offices write them down. They are still judgement calls.
+
+### 5. Facts no register holds
+
+Some things simply are not in any register. Education is the clearest example. If you studied in the country, your degree is on record. If you studied abroad, nobody here wrote it down.
+
+In Norway, before a survey in 2011, Statistics Norway [had no record of education](https://www.ssb.no/en/utdanning/statistikker/utniv/aar/2017-06-15?fane=om) for 43% of immigrants aged 16 and over. It sent a questionnaire to more than 217,000 of them, and the gap fell to 20.4%. By 2014 it was back up to 25%, because new people keep arriving.
+
+The same goes for language, religion, disability and anything else that no office needs to know to do its job. That is why some countries run a **combined census**: registers for what they can do, plus a survey or questionnaire for what they cannot. Estonia, from the table in the last post, is one of them.
+
+### 6. Kept for someone else's purpose
+
+Every register answers its own office's question, not yours.
+
+Take work. Finland's register-based employment statistics count you as a wage earner if you had [a valid employment relationship or pension insurance in the last week of the year](https://stat.fi/til/tyokay/kas_en.html), because that is what pension records can tell. Finland's Labour Force Survey, following the international definition, counts you as employed if you [worked at least one hour for pay](https://stat.fi/til/tyti/2020/12/tyti_2020_12_2021-01-28_laa_001_en.html) in the survey week. Two definitions of "employed", both sensible, and they do not give the same number.
+
+Or households. In Swedish register statistics, [a household is the people registered at the same dwelling](https://www.statistikdatabasen.scb.se/goto/en/ssd/HushallT27). The student from item 4, still registered at her parents' address, is part of their household on paper, whatever her actual life looks like. Multiply her by every person registered at the wrong address and household statistics drift. Work on Norway's household register shows that [address registration errors bias the results](https://doi.org/10.1093/jrsssa/qnaf181) unless a survey of sampled addresses is used to correct them.
+
+The census inherits the office's definitions. And when an office changes its own rules, a new benefit or a new form, the statistics can shift even though nothing about the people changed.
+
+That is the bill. None of it is a reason to go back to the clipboard; a traditional census has its own list of errors, as we saw last time. But these errors are real, and they do not announce themselves.
+
+## What it takes
+
+So why does every country not do this? Because it rests on four things, and each one takes decades.
+
+1. **A population register people actually keep up to date.** In the Nordic countries people have every reason to: as Statistics Finland puts it, it is [practically impossible to live in Finland without a personal identity code](https://stat.fi/til/muutl/2008/muutl_2008_2009-05-20_laa_001_en.html). You need it to work, to open a bank account, to see a doctor.
+2. **One number used by every office.** Without it, linking becomes guesswork.
+3. **A law that lets the statistics office take the data.** Statistics Finland has [extensive legal rights](https://stat.fi/en/about-us/get-to-know-statistics-finland/data-protection) to obtain personal data from other authorities for statistics.
+4. **Trust.**
+
+Remember the uncomfortable thing at the end of the last post? A count that covers everyone is also a list of everyone. A register-based census is that list, kept permanently, with your income and your degree attached.
+
+What makes it bearable is the other half of the same law. In Finland, data collected for statistics may never be released for administrative decisions, investigations, surveillance or court cases about an individual. It is a one-way door: your records flow in to the statistics office, and nothing about you flows back out to the rest of the government. Without that door, I do not think people would put up with this system. And they would be right not to.
+
+## So how wrong is it?
+
+Look at the bill again. Registers someone had to build, people who left, people who were never there on paper, registers that disagree, facts that are missing, definitions borrowed from someone else. The fair question is: how much does all of it add up to? How far is Denmark's count from the true number of people living in Denmark?
+
+The honest answer is that nobody knows exactly.
+
+To measure how wrong a count is, you need the right answer to compare it against. And the right answer is exactly the thing nobody has. A traditional census can at least send a second team to a sample of areas and compare, which is how the US measured its 2020 undercount in the last post. A register census mostly has to check registers against other registers. The Swedish researchers estimating who has left had to infer it from whether people left any trace in other records, because there is no way to check door to door. The newest methods are clever: one 2026 approach treats each register as a witness that can [miss people who are there and record people who are gone](https://arxiv.org/abs/2603.24643), and borrows capture-recapture models from ecology to estimate who is really present. But it is still an estimate. There is no answer key to mark it against.
+
+Every method for repairing these errors gets judged against a truth that no one holds.
+
+Unless you build one.
+
+Next time: a country where I know the true answer for every single person, because I made the country up.
+
+## Sources and further reading
+
+- Anita Lange (Statistics Denmark), [on Denmark's road to the first register-based census](https://content.iospress.com/articles/statistical-journal-of-the-iaos/sji00798), Statistical Journal of the IAOS, 2014.
+- Morten Schmidt and others, [The Danish Civil Registration System as a tool in epidemiology](https://doi.org/10.1007/s10654-014-9930-3), European Journal of Epidemiology, 2014.
+- Statistics Finland, [History of population censuses](https://stat.fi/tk/he/vaestolaskenta/vaestolask_historia_en.html).
+- Martin Axelson and others, [Doing a register-based census for the first time: the Swedish experiences](https://ww2.amstat.org/meetings/proceedings/2012/data/assets/pdf/303749_77679.pdf), JSM Proceedings, 2012.
+- United Nations, Principles and Recommendations for Population and Housing Censuses, [Revision 3](https://unstats.un.org/unsd/demographic-social/Standards-and-Methods/files/Principles_and_Recommendations/Population-and-Housing-Censuses/Series_M67rev3-E.pdf) (2017) and [Revision 4](https://unstats.un.org/unsd/publication/SeriesM/Series_M67Rev4en.pdf) (2025).
+- Eurostat, [Norway 2011 census metadata](https://ec.europa.eu/eurostat/cache/metadata/EN/cens_11r_esmscs_no.htm) and [2021 census metadata](https://ec.europa.eu/eurostat/cache/metadata/EN/cens_21_esmscs21_no.htm).
+- Andrea Monti, Sven Drefahl, Eleonora Mussino and Juho Härkönen, [Over-coverage in population registers leads to bias in demographic estimates](https://doi.org/10.1080/00324728.2019.1683219), Population Studies, 2020.
+- Eleonora Mussino, Bruno Santos, Mimmi Lounela and Sven Drefahl, [Invisible emigrants](https://doi.org/10.1080/00324728.2026.2651274), Population Studies, 2026 (and [Stockholm University's summary](https://www.su.se/english/divisions/department-of-sociology/news/articles/2026-04-23-new-model-for-population-estimates-gives-more-reliable-results)).
+- Lucy Brown, Eleni Matechou, Bruno Santos and Eleonora Mussino, [A capture-recapture hidden Markov model framework for register-based inference of population size and dynamics](https://arxiv.org/abs/2603.24643), arXiv, 2026.
+- Li-Chun Zhang, [Supervised network prediction for household statistics](https://doi.org/10.1093/jrsssa/qnaf181), Journal of the Royal Statistical Society Series A, 2026.
+- Statistics Netherlands, [The Dutch Virtual Census of 2001: a register-based approach combined with survey information](https://digitallibrary.un.org/record/572444/files/%5BE_%5DECE_CES_2006_28-EN.pdf), UNECE, 2006.
+- Statistics Sweden, [Census planning and quality assurance strategy in a register-based census](https://digitallibrary.un.org/record/596476/files/%5BE_%5DECE_CES_GE.41_2007_3-EN.pdf), UNECE, 2007.
+- Manuela Lenk (Statistics Austria), [Methods of register-based census in Austria](https://International.ipums.org/international/resources/enum_materials_pdf/source_doc_at2011a.pdf), 2009.
+- Destatis, [How does the register census work?](https://www.destatis.de/EN/Themes/Society-Environment/Register-census/Methods/explanatory-notes.html)
+- Statistics Norway, [Educational attainment of the population: about the statistics](https://www.ssb.no/en/utdanning/statistikker/utniv/aar/2017-06-15?fane=om).
