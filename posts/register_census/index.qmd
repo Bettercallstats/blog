@@ -1,9 +1,8 @@
 ---
 title: "Counting a country without knocking on a single door"
-date: "2026-11-19"
+date: "2026-11-20"
 description: "How a register-based census works, and why it is not a free lunch."
 categories: [official statistics, census]
-draft: true
 ---
 
 ```{=html}
@@ -19,7 +18,6 @@ The last post ended with a question: how do you count a country without knocking
 
 Denmark has had an answer since 1981. That year it ran [the first population and housing census in the world that was entirely register-based](https://content.iospress.com/articles/statistical-journal-of-the-iaos/sji00798). No enumerators. No forms. Nobody was asked anything. And still, at the end of it, Statistics Denmark knew how many people lived in the country, how old they were, where they lived, who they lived with and what work they did.
 
-<!-- USER: check this paragraph is true to how you first met register censuses; rewrite in your own words if not. -->
 The first time I read about this, my honest reaction was: that is not a census. A census is the thing with the enumerator and the clipboard. It took me a while to see that Denmark had not skipped the count. It had moved it. The counting had already happened, one record at a time, every time someone was born, moved house or started a job.
 
 This post is about how that works. And then, because I promised, about the bill.
