@@ -222,15 +222,25 @@ Hold on to this one. It will come back in this series, in a bigger way.
 
 In the last post I quoted the cost: in the 2010 round, a traditional census cost a median of $5.57 per person, a fully register-based one $0.24. Twenty-three times cheaper. So where is the catch?
 
-Here is the bill. Five items.
+Here is the bill. Six items.
 
-### 1. People who left but are still on the books
+### 1. The registers themselves
+
+Remember the $0.24? It leaves out the most expensive part: the registers. When the Netherlands described its register-based census to other statistics offices, it said plainly that [the costs of the registers are not included](https://digitallibrary.un.org/record/572444/files/%5BE_%5DECE_CES_2006_28-EN.pdf), because registers are not kept up to date for the census but for other purposes. Dutch law even lets Statistics Netherlands [use government registers free of charge](https://www.czso.cz/documents/10180/20550323/32019715q1086.pdf). Someone else already paid.
+
+Someone always pays, and it takes a long time. Denmark's CPR came in 1968 and its first register census in 1981. Sweden had its number in 1947 and still needed until 2011, because of the flats. Austria did it more recently, and you can see every step. After its last traditional census in 2001, it set up a [Buildings and Dwellings Register in 2004](https://www.statistik.at/en/about-us/surveys/register-based-census/housing-census), passed a Register-based Census Act in 2006, ran [a full test census that October](https://International.ipums.org/international/resources/enum_materials_pdf/source_doc_at2011a.pdf) to check the registers were good enough, and only then, in 2011, counted without a single questionnaire.
+
+Germany shows what this costs at today's prices. It plans to move to a register census by 2031, and the wider programme to modernise and connect its public registers comes with [investment costs of about 2.5 billion euros](https://service.wirtschaft.nrw/en/hilfe/efa/nachnutzung/medienbruchfreier-nachweisabruf/projekt-gesamtsteuerung-registermodernisierung/onlinezugangsgesetz). That money is expected to pay for itself across the whole administration, not just the census. Even so, Germany [has no nationwide register of buildings and dwellings yet](https://www.destatis.de/EN/Themes/Society-Environment/Register-census/Methods/explanatory-notes.html), so for 2031 it will still have to survey every owner of residential space in the country.
+
+So the free lunch is really a lunch someone paid for decades earlier. If your country did not pay then, the bill comes first.
+
+### 2. People who left but are still on the books
 
 Leaving the country is the one move people forget to report. Nobody fines you once you are gone. So the register keeps you, and the census keeps counting you.
 
 Sweden has studied this more than most. Back in the late 1990s, Statistics Sweden [estimated](https://link.springer.com/10.1007/s11135-023-01757-x) that about 1% of Nordic migrants and 2.8% of other migrants on its register had in fact already left. It does not just inflate the total. Researchers at Stockholm University showed this year that once you correct for people who have quietly left, [employment and fertility rates turn out higher, and so do death rates](https://www.su.se/english/divisions/department-of-sociology/news/articles/2026-04-23-new-model-for-population-estimates-gives-more-reliable-results), especially at older ages. Part of the reason is grim and simple: some migrants go home and die there, and the death never reaches the Swedish register.
 
-### 2. People who are here but on no list
+### 3. People who are here but on no list
 
 The opposite problem. People who live in the country but appear in no register: people without papers, people waiting for a decision. In Norway, for example, asylum seekers [are not registered as residents](https://ec.europa.eu/eurostat/cache/metadata/EN/cens_11r_esmscs_no.htm) until they are granted a residence permit, even if they have already been there more than six months.
 
@@ -247,13 +257,13 @@ They do not cancel out. They happen to different people in different places.
 
 :::
 
-### 3. Two registers, two answers
+### 4. Two registers, two answers
 
 Now take one person and two offices. The population register says she lives with her parents in a small town. The university says she has been studying in the capital for three years, and her employer has her at a café there. Which is true?
 
 Both were true once. One office was told about the move, the other was not. Every register-based census needs rules for whom to believe when sources disagree, and those rules are judgement calls made by people. Good offices write them down. They are still judgement calls.
 
-### 4. Facts no register holds
+### 5. Facts no register holds
 
 Some things simply are not in any register. Education is the clearest example. If you studied in the country, your degree is on record. If you studied abroad, nobody here wrote it down.
 
@@ -261,13 +271,13 @@ In Norway, before a survey in 2011, Statistics Norway [had no record of educatio
 
 The same goes for language, religion, disability and anything else that no office needs to know to do its job. That is why some countries run a **combined census**: registers for what they can do, plus a survey or questionnaire for what they cannot. Estonia, from the table in the last post, is one of them.
 
-### 5. Kept for someone else's purpose
+### 6. Kept for someone else's purpose
 
 Every register answers its own office's question, not yours.
 
 Take work. Finland's register-based employment statistics count you as a wage earner if you had [a valid employment relationship or pension insurance in the last week of the year](https://stat.fi/til/tyokay/kas_en.html), because that is what pension records can tell. Finland's Labour Force Survey, following the international definition, counts you as employed if you [worked at least one hour for pay](https://stat.fi/til/tyti/2020/12/tyti_2020_12_2021-01-28_laa_001_en.html) in the survey week. Two definitions of "employed", both sensible, and they do not give the same number.
 
-Or households. In Swedish register statistics, [a household is the people registered at the same dwelling](https://www.statistikdatabasen.scb.se/goto/en/ssd/HushallT27). The student from item 3, still registered at her parents' address, is part of their household on paper, whatever her actual life looks like.
+Or households. In Swedish register statistics, [a household is the people registered at the same dwelling](https://www.statistikdatabasen.scb.se/goto/en/ssd/HushallT27). The student from item 4, still registered at her parents' address, is part of their household on paper, whatever her actual life looks like.
 
 The census inherits the office's definitions. And when an office changes its own rules, a new benefit or a new form, the statistics can shift even though nothing about the people changed.
 
@@ -288,7 +298,7 @@ What makes it bearable is the other half of the same law. In Finland, data colle
 
 ## So how wrong is it?
 
-Look at the bill again. People who left, people who were never there on paper, registers that disagree, facts that are missing, definitions borrowed from someone else. The fair question is: how much does all of it add up to? How far is Denmark's count from the true number of people living in Denmark?
+Look at the bill again. Registers someone had to build, people who left, people who were never there on paper, registers that disagree, facts that are missing, definitions borrowed from someone else. The fair question is: how much does all of it add up to? How far is Denmark's count from the true number of people living in Denmark?
 
 The honest answer is that nobody knows exactly.
 
@@ -309,4 +319,7 @@ Next time: a country where I know the true answer for every single person, becau
 - United Nations, Principles and Recommendations for Population and Housing Censuses, [Revision 3](https://unstats.un.org/unsd/demographic-social/Standards-and-Methods/files/Principles_and_Recommendations/Population-and-Housing-Censuses/Series_M67rev3-E.pdf) (2017) and [Revision 4](https://unstats.un.org/unsd/publication/SeriesM/Series_M67Rev4en.pdf) (2025).
 - Eurostat, [Norway 2011 census metadata](https://ec.europa.eu/eurostat/cache/metadata/EN/cens_11r_esmscs_no.htm) and [2021 census metadata](https://ec.europa.eu/eurostat/cache/metadata/EN/cens_21_esmscs21_no.htm).
 - Andrea Monti and others, [Over-coverage in population registers leads to bias in demographic estimates](https://ideas.repec.org/a/taf/rpstxx/v74y2020i3p451-469.html), Population Studies, 2020, and Stockholm University on [the 2026 follow-up](https://www.su.se/english/divisions/department-of-sociology/news/articles/2026-04-23-new-model-for-population-estimates-gives-more-reliable-results).
+- Statistics Netherlands, [The Dutch virtual census](https://digitallibrary.un.org/record/572444/files/%5BE_%5DECE_CES_2006_28-EN.pdf), UNECE Conference of European Statisticians, 2006.
+- Manuela Lenk (Statistics Austria), [Methods of register-based census in Austria](https://International.ipums.org/international/resources/enum_materials_pdf/source_doc_at2011a.pdf), 2009.
+- Destatis, [How does the register census work?](https://www.destatis.de/EN/Themes/Society-Environment/Register-census/Methods/explanatory-notes.html)
 - Statistics Norway, [Educational attainment of the population: about the statistics](https://www.ssb.no/en/utdanning/statistikker/utniv/aar/2017-06-15?fane=om).
